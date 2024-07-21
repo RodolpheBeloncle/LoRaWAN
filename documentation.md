@@ -22,3 +22,7 @@ Ces pratiques assurent une séparation claire des responsabilités en matière d
  ## Device Lora de classe A 
  
  ![Capture d’écran 2024-07-21 à 16 43 14 (2)](https://github.com/user-attachments/assets/47be90f5-61ea-48a6-8222-5a053f3bd748)
+
+ ## Device Lora de classe B
+ 
+ ![class-b](https://github.com/user-attachments/assets/ecd88543-e412-473f-a12a-7074042aa703)
