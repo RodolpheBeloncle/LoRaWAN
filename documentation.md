@@ -18,3 +18,7 @@ Ces pratiques assurent une séparation claire des responsabilités en matière d
  ## Authentification Avec le network server
 
  ![Authentification-server](https://github.com/user-attachments/assets/dfac128a-30ab-4e2d-8155-a33e0d0db84f)
+
+ ## Device Lora de classe A 
+ 
+ ![Capture d’écran 2024-07-21 à 16 43 14 (2)](https://github.com/user-attachments/assets/47be90f5-61ea-48a6-8222-5a053f3bd748)
