@@ -22,7 +22,7 @@ ABP est une méthode où les clés de session réseau (NwkSKey) et de session d'
 Pas de processus d'authentification dynamique lors de la mise en ligne du dispositif.
 
 ### Avantages
-- ✔️ **Simplicité** : Pas besoin d'un serveur de jointure.
+- ✔ **Simplicité** : Pas besoin d'un serveur de jointure.
 - ⏩ **Rapide à déployer** : Le dispositif est immédiatement opérationnel une fois alimenté.
 
 ### Inconvénients
