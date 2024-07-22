@@ -43,7 +43,8 @@ Processus d'authentification dynamique et sécurisé entre le dispositif et le s
 3. Le Network Server retourne le DevAddr,ainsi qu'une série de paramètres.
 4. Les paramètres fournis lors du Join-Accept, associé à l'AppKey permettent au Device Lora de générer le même NwkSKey et le même AppSKey qui avait été initialement généré sur le Network Server.
 
-![OTTA-2](https://github.com/user-attachments/assets/707083ae-98e8-4bd6-80f0-7ed86f32558a)
+![OTAA-2](https://github.com/user-attachments/assets/813e2a07-8151-4321-91d1-37fcfdef1921)
+
 ⚠️ L'application session key (AppSKey) et L'application key (AppKey) n'ont pas la meme finalité et sont différentes.
 
 ### Avantages
