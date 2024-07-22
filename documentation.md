@@ -16,7 +16,8 @@ Ces pratiques assurent une séparation claire des responsabilités en matière d
 
 ## 1. Activation par Personnalisation (ABP)
 
-![ABP-activation](https://github.com/user-attachments/assets/4c6d22dd-382c-43be-8e58-92f4f62b4447)
+![ABP-activation](https://github.com/user-attachments/assets/8a9637c6-66de-42ff-9e80-7296435e1f47)
+
 
 🟢 **Description**  
 ABP est une méthode où les clés de session réseau (NwkSKey) et de session d'application (AppSKey) ainsi que l'adresse du dispositif (DevAddr) sont programmées directement dans le dispositif avant le déploiement.  
@@ -32,7 +33,7 @@ Pas de processus d'authentification dynamique lors de la mise en ligne du dispos
 
 ## 2. Activation par Liaison Radio (OTAA)
 
-![otaa-activation](https://github.com/user-attachments/assets/181389d0-e616-4ead-b195-947bb0642a47)
+![otaa-activation](https://github.com/user-attachments/assets/489463d5-0d1f-4ed3-ab8d-4828a7f06e2a)
 
 🔒 **Description**  
 OTAA est une méthode où le dispositif envoie une requête de jointure au réseau et reçoit les clés de session (NwkSKey et AppSKey) dynamiquement.  
