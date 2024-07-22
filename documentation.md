@@ -1,4 +1,4 @@
-# Système LoRaWAN
+![ABP-activation](https://github.com/user-attachments/assets/4c4ead6e-392b-481b-9c8b-fcda12434576)# Système LoRaWAN
 
  ## Network Server & Application Server
 
@@ -8,8 +8,6 @@
 
 # Méthodes d'Activation des Dispositifs IoT
 
-
-
 - 🔑 **NwSKey (Authentification)** : La clé NwSKey, utilisée pour l'authentification, est gérée par le serveur réseau (Network server).
 - 🔒 **AppSKey (Chiffrement)** : La clé AppSKey, utilisée pour le chiffrement des données, est gérée par le serveur d'application (Application server).
 - 📇 **DevAddr (Adressage)**: Chaque dispositif final est identifié par une adresse unique appelée DevAddr. Cette adresse est utilisée pour diriger les messages du réseau vers le bon dispositif et pour identifier les dispositifs sur le réseau.
@@ -17,6 +15,9 @@
 Ces pratiques assurent une séparation claire des responsabilités en matière de sécurité, améliorant ainsi la robustesse globale du système.
 
 ## 1. Activation par Personnalisation (ABP)
+
+![ABP-activation](https://github.com/user-attachments/assets/4c6d22dd-382c-43be-8e58-92f4f62b4447)
+
 🟢 **Description**  
 ABP est une méthode où les clés de session réseau (NwkSKey) et de session d'application (AppSKey) ainsi que l'adresse du dispositif (DevAddr) sont programmées directement dans le dispositif avant le déploiement.  
 Pas de processus d'authentification dynamique lors de la mise en ligne du dispositif.
@@ -30,6 +31,9 @@ Pas de processus d'authentification dynamique lors de la mise en ligne du dispos
 - ❌ **Moins flexible** : Les modifications des clés nécessitent une reconfiguration physique des dispositifs.
 
 ## 2. Activation par Liaison Radio (OTAA)
+
+![otaa-activation](https://github.com/user-attachments/assets/181389d0-e616-4ead-b195-947bb0642a47)
+
 🔒 **Description**  
 OTAA est une méthode où le dispositif envoie une requête de jointure au réseau et reçoit les clés de session (NwkSKey et AppSKey) dynamiquement.  
 Processus d'authentification dynamique et sécurisé entre le dispositif et le serveur de jointure.
