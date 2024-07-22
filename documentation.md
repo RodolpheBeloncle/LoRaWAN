@@ -1,4 +1,4 @@
-![ABP-activation](https://github.com/user-attachments/assets/4c4ead6e-392b-481b-9c8b-fcda12434576)# Système LoRaWAN
+# Système LoRaWAN
 
  ## Network Server & Application Server
 
