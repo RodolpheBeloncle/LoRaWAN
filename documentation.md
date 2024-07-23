@@ -120,6 +120,7 @@ Une attaque par replay est une méthode d'attaque où un intrus intercepte et r�
 - 🔒 **Chiffrement** : Utilisation de méthodes de chiffrement pour sécuriser les communications.
 - 🔁 **Tokens d'Authentification** : Utilisation de tokens uniques ou jetons d'authentification qui expirent après une utilisation.
 - ⏲️ **Horodatage** : Incorporer des horodatages dans les messages pour garantir qu'ils ne sont valides que pour une période limitée.
+- 🔢 **Compteur de Trames (Frame Counter)** : Utilisation d'un compteur de trames qui incrémente à chaque message envoyé. Si un message avec un compteur inférieur ou égal est reçu, il est rejeté comme étant un possible replay.
 
 ### Inconvénients pour l'Attaquant
 - ⏱️ **Temps Limité** : Les contre-mesures comme les horodatages et les tokens d'authentification peuvent limiter la fenêtre d'opportunité pour l'attaque.
