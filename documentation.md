@@ -138,6 +138,6 @@ Le réglage du SF et du PT (puissance transmise) n'est pas simple. Même si l'on
 
 <img width="687" alt="Capture d’écran 2024-07-23 à 22 05 13" src="https://github.com/user-attachments/assets/fda81e8a-c1ba-4307-af51-f01e3077477c">
 
-**NB : Un Device LoRaWAN doit activer le mode ADR (Flag ADR) pour utiliser cette fonctionnalité.**
+`NB : Un Device LoRaWAN doit activer le mode ADR (Flag ADR) pour utiliser cette fonctionnalité.`
 
 
