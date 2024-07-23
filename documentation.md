@@ -97,4 +97,33 @@ Les appareils de classe C sont toujours en mode réception sauf lorsqu'ils trans
  ![class-c](https://github.com/user-attachments/assets/c18b4380-a082-4bad-ac13-f5d5a051b829)
 ---
 
+# Attaque par Replay
+
+<img width="784" alt="Capture d’écran 2024-07-23 à 05 18 19" src="https://github.com/user-attachments/assets/8ea88cc5-70b1-49cc-84a0-0d8abd15ab45">
+
+🛡️ **Description**  
+Une attaque par replay est une méthode d'attaque où un intrus intercepte et réémet des messages de communication valides pour tromper le système de sécurité. Cela peut permettre à l'attaquant de rejouer les messages interceptés pour obtenir un accès non autorisé ou pour perturber les opérations normales du système.
+
+### Fonctionnement
+- 📡 **Interception** : L'attaquant intercepte les messages valides échangés entre deux parties.
+- 🔄 **Réémission** : L'attaquant réémet ces messages à une partie du système pour reproduire les actions précédemment autorisées.
+
+### Exemples d'Attaques
+- 🏦 **Banques et Paiements** : Réémettre des transactions financières pour effectuer des paiements multiples.
+- 🏠 **Systèmes Domotiques** : Réémettre des signaux pour déverrouiller des portes ou activer des systèmes de sécurité.
+
+### Avantages pour l'Attaquant
+- 🕵️‍♂️ **Difficulté de Détection** : Les messages réémis sont souvent identiques aux messages légitimes, ce qui rend difficile leur détection.
+- 💻 **Simplicité** : Ne nécessite pas de connaissances approfondies pour intercepter et réémettre des messages.
+
+### Contre-mesures
+- 🔒 **Chiffrement** : Utilisation de méthodes de chiffrement pour sécuriser les communications.
+- 🔁 **Tokens d'Authentification** : Utilisation de tokens uniques ou jetons d'authentification qui expirent après une utilisation.
+- ⏲️ **Horodatage** : Incorporer des horodatages dans les messages pour garantir qu'ils ne sont valides que pour une période limitée.
+
+### Inconvénients pour l'Attaquant
+- ⏱️ **Temps Limité** : Les contre-mesures comme les horodatages et les tokens d'authentification peuvent limiter la fenêtre d'opportunité pour l'attaque.
+- 🛠️ **Complexité Accrue** : Les systèmes avancés de détection et de réponse peuvent compliquer la réussite de l'attaque.
+
+
 
