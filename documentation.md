@@ -130,5 +130,14 @@ Une attaque par replay est une méthode d'attaque où un intrus intercepte et r�
 - ⏱️ **Temps Limité** : Les contre-mesures comme les horodatages et les tokens d'authentification peuvent limiter la fenêtre d'opportunité pour l'attaque.
 - 🛠️ **Complexité Accrue** : Les systèmes avancés de détection et de réponse peuvent compliquer la réussite de l'attaque.
 
+## Adaptive Data Rate (ADR)
+
+Le réglage du SF et du PT (puissance transmise) n'est pas simple. Même si l'on trouve une bonne configuration, la transmission peut être altérée par l'environnement local ou la météo. Pour surmonter cette difficulté, une méthode d'ajustement automatique a été mise en place par le protocole LoRaWAN : il s'agit de l'Adaptive Data Rate (ADR). L'idée est de laisser le Network Server calculer la meilleure combinaison de SF / PT.
+
+<img width="795" alt="data-rate" src="https://github.com/user-attachments/assets/5a48d735-1688-4077-a703-a8580a8abe64">
+
+<img width="687" alt="Capture d’écran 2024-07-23 à 22 05 13" src="https://github.com/user-attachments/assets/fda81e8a-c1ba-4307-af51-f01e3077477c">
+
+**NB : Un Device LoRaWAN doit activer le mode ADR (Flag ADR) pour utiliser cette fonctionnalité.**
 
 
