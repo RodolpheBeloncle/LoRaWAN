@@ -123,7 +123,7 @@ Une attaque par replay est une méthode d'attaque où un intrus intercepte et r�
 - 🔢 **Compteur de Trames (Frame Counter)** : Utilisation d'un compteur de trames qui incrémente à chaque message envoyé. Si un message avec un compteur inférieur ou égal est reçu, il est rejeté comme étant un possible replay.
   
 `=> Principe du Frame counter`: 
-
+*Reception valide seulement si X >= Y*
 <img width="670" alt="frame-counter" src="https://github.com/user-attachments/assets/3a3f218e-0044-49f4-a31e-6ccabb2c27d7">
 
 ### Inconvénients pour l'Attaquant
