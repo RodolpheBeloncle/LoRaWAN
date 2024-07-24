@@ -35,6 +35,8 @@ Nous avons le choix entre mettre en place toute l'infrastructure du réseau ou n
 
 ## le réseau LoRaWAN hybride
 
+Il existe une autre possibilité qui est un intermédiaire entre le réseau public et le réseau privé. Elle présente l'avantage de gérer la couverture du réseau en utilisant ses propres Gateways, tout en confiant l'infrastructure du serveur LoRaWAN à un fournisseur de service afin de limiter les investissements et la maintenance.
+
 <img width="754" alt="reseau-dedié" src="https://github.com/user-attachments/assets/bd599a1b-0dfb-40f7-821d-8c5328a01def">
 
 `La Gateway comprend le Network Server et l’Application Server (ligne continue verte). La plateforme IoT est parfois également incluse (ligne verte en pointillés).`
@@ -43,4 +45,4 @@ Nous avons le choix entre mettre en place toute l'infrastructure du réseau ou n
 
 - 📡 Dans certaines Gateway, une instance d'un serveur LoRaWAN est proposée. Cela simplifie l'infrastructure globale car vous avez tout dans un seul boitier (la Gateway) mais cela limitera considérablement le potentiel de votre réseau.
 
-- Il existe une autre possibilité qui est un intermédiaire entre le réseau public et le réseau privé. Elle présente l'avantage de gérer la couverture du réseau en utilisant ses propres Gateways, tout en confiant l'infrastructure du serveur LoRaWAN à un fournisseur de service afin de limiter les investissements et la maintenance.
+
