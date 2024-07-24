@@ -4,7 +4,7 @@ Nous avons le choix entre mettre en place toute l'infrastructure du réseau ou n
 
 - 🏢 Nous pouvons faire appel à des opérateurs publics qui disposent de réseaux opérationnels à l'échelle nationale.
 - 🌐 Nous pouvons construire notre propre réseau LoRaWAN privé.
-- 🔄 Nous pouvons construire un réseau hybride en ne mettant en place qu'une partie de l'infrastructure.
+- 🔄 Nous pouvons construire un réseau hybride en ne mettant en place qu'une partie de l'infrastructure.(réseau dédié avec the things network par exemple)
 
 
 ## Les réseaux LoRaWAN d'opérateurs publics
@@ -32,3 +32,15 @@ Nous avons le choix entre mettre en place toute l'infrastructure du réseau ou n
 - Vous devrez mettre en place votre propre Gateway et votre propre infrastructure de serveurs pour communiquer avec vos Devices. Vous devrez également vous occuper de l'administration de votre serveur LoRaWAN.
   
 - 📡 Dans certaines Gateway, une instance d'un serveur LoRaWAN est proposée. Cela simplifie l'infrastructure globale car vous avez tout dans un seul boitier (la Gateway) mais cela limitera considérablement le potentiel de votre réseau.
+
+## le réseau LoRaWAN hybride
+
+<img width="754" alt="reseau-dedié" src="https://github.com/user-attachments/assets/bd599a1b-0dfb-40f7-821d-8c5328a01def">
+
+`La Gateway comprend le Network Server et l’Application Server (ligne continue verte). La plateforme IoT est parfois également incluse (ligne verte en pointillés).`
+
+- Mettre en place votre propre Gateway et votre propre infrastructure de serveurs pour communiquer avec vos Devices. Vous devrez également vous occuper de l'administration de votre serveur LoRaWAN.
+
+- 📡 Dans certaines Gateway, une instance d'un serveur LoRaWAN est proposée. Cela simplifie l'infrastructure globale car vous avez tout dans un seul boitier (la Gateway) mais cela limitera considérablement le potentiel de votre réseau.
+
+- Il existe une autre possibilité qui est un intermédiaire entre le réseau public et le réseau privé. Elle présente l'avantage de gérer la couverture du réseau en utilisant ses propres Gateways, tout en confiant l'infrastructure du serveur LoRaWAN à un fournisseur de service afin de limiter les investissements et la maintenance.
