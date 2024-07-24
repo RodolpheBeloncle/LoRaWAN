@@ -26,7 +26,8 @@ Nous avons le choix entre mettre en place toute l'infrastructure du réseau ou n
 ## Les réseaux LoRaWAN privés
 
 <img width="647" alt="reseau-prives" src="https://github.com/user-attachments/assets/95abc6fa-d067-4345-87ed-00792514b675">
+`La Gateway comprend le Network Server et l’Application Server (ligne continue verte). La plateforme IoT est parfois également incluse (ligne verte en pointillés).`
 
 - Vous devrez mettre en place votre propre Gateway et votre propre infrastructure de serveurs pour communiquer avec vos Devices. Vous devrez également vous occuper de l'administration de votre serveur LoRaWAN.
+  
 - 📡 Dans certaines Gateway, une instance d'un serveur LoRaWAN est proposée. Cela simplifie l'infrastructure globale car vous avez tout dans un seul boitier (la Gateway) mais cela limitera considérablement le potentiel de votre réseau.
-- 🖥️ Sur la Figure 85, nous pouvons voir que la Gateway comprend le Network Server et l’Application Server (ligne continue verte). La plateforme IoT est parfois également incluse (ligne verte en pointillés).
