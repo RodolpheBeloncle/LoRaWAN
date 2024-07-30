@@ -102,8 +102,7 @@ echo "The Gateway EUI is $EUI"
 ```
 Le résultat sera quelque chose comme :
 
-```
-csharp
+```bash
 
 The Gateway EUI is b827ebfffee00c83
 ```
