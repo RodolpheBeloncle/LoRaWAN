@@ -155,3 +155,84 @@ sudo ln -s /etc/ssl/certs/ca-certificates.crt /opt/ttn-station/config/tc.trust
 ```
 ### Fichier de Configuration station.conf
 Enfin, créez le fichier de configuration station.conf contenant les options de configuration pour votre concentrateur.
+
+```bash
+echo '
+{
+    /* If slave-X.conf present this acts as default settings */
+    "SX1301_conf": { /* Actual channel plan is controlled by server */
+        "lorawan_public": true, /* is default */
+        "clksrc": 1, /* radio_1 provides clock to concentrator */
+        /* path to the SPI device, un-comment if not specified on the command line e.g., RADIODEV=/dev/spidev0.0 */
+        /*"device": "/dev/spidev0.0",*/
+        /* freq/enable provided by LNS - only HW specific settings listed here */
+        "radio_0": {
+            "type": "SX1257",
+            "rssi_offset": -166.0,
+            "tx_enable": true,
+            "antenna_gain": 0
+        },
+        "radio_1": {
+            "type": "SX1257",
+            "rssi_offset": -166.0,
+            "tx_enable": false
+        }
+        /* chan_multiSF_X, chan_Lora_std, chan_FSK provided by LNS */
+    },
+    "station_conf": {
+        "routerid": "'"$EUI"'",
+        "log_file": "stderr",
+        "log_level": "DEBUG", /* XDEBUG,DEBUG,VERBOSE,INFO,NOTICE,WARNING,ERROR,CRITICAL */
+        "log_size": 10000000,
+        "log_rotate": 3,
+        "CUPS_RESYNC_INTV": "1s"
+    }
+}
+' | sudo tee /opt/ttn-station/config/station.conf
+```
+Enfin, créez le script start.sh, qui sera utilisé pour réinitialiser l'iC880A via son pin de réinitialisation et démarrer le transfert de paquets 
+
+```bash
+
+echo '#!/bin/bash
+
+# Reset iC880a PIN
+SX1301_RESET_BCM_PIN=25
+echo "$SX1301_RESET_BCM_PIN"  > /sys/class/gpio/export
+echo "out" > /sys/class/gpio/gpio$SX1301_RESET_BCM_PIN/direction
+echo "0"   > /sys/class/gpio/gpio$SX1301_RESET_BCM_PIN/value
+sleep 0.1
+echo "1"   > /sys/class/gpio/gpio$SX1301_RESET_BCM_PIN/value
+sleep 0.1
+echo "0"   > /sys/class/gpio/gpio$SX1301_RESET_BCM_PIN/value
+sleep 0.1
+echo "$SX1301_RESET_BCM_PIN"  > /sys/class/gpio/unexport
+
+# Test the connection, wait if needed.
+while [[ $(ping -c1 google.com 2>&1 | grep " 0% packet loss") == "" ]]; do
+echo "[TTN Gateway]: Waiting for internet connection..."
+sleep 30
+done
+
+# Start station
+/opt/ttn-station/bin/station
+' | sudo tee /opt/ttn-station/bin/start.sh
+```
+Vous pouvez verifier si le script est executable
+```bash
+sudo chmod +x /opt/ttn-station/bin/start.sh
+
+```
+
+## Test du Packet Forwarder
+```bash
+cd /opt/ttn-station/config
+sudo RADIODEV=/dev/spidev0.0 /opt/ttn-station/bin/start.sh
+```
+
+Cela initialisera la carte concentrateur, connectera votre passerelle à The Things Stack, récupérera la configuration en fonction de votre plan de fréquence et commencera à écouter les paquets. Si vous remarquez quelque chose comme :
+
+```bash
+2022-03-27 02:11:50.009 [S2E:VERB] RX 867.5MHz DR5 SF7/BW125 snr=6.2 rssi=-103 xtime=0xE0000000E34FB4 - updf mhdr=40 DevAddr=260B0748 FCtrl=00 FCnt=35 FOpts=[] 014A mic=1717970429 (14 bytes)
+2022-03-27 02:12:06.130 [S2E:VERB] RX 867.3MHz DR5 SF7/BW125 snr=8.0 rssi=-102 xtime=0xE0000001D92CCB - updf mhdr=40 DevAddr=260B0748 FCtrl=00 FCnt=36 FOpts=[] 01EA mic=463407879 (14 bytes)
+```
