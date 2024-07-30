@@ -76,8 +76,7 @@ Assurez-vous que le binaire a été construit avec succès :
 ```
 Vous devriez voir quelque chose comme ceci :
 
-```
-yaml
+```yaml
 
 Station: 2.0.6(rpi/std) 2022-03-26 17:43:16
 Package: (null)
