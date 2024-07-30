@@ -122,7 +122,7 @@ Suivez les instructions dans la section LNS pour créer une clé API avec les dr
 ## Étape 7 : Configurer LoRa Basics™ Station
 L'étape suivante consiste à créer les fichiers de configuration nécessaires pour que la passerelle LoRa Basics™ Station se connecte à The Things Stack.
 
-Créer un Répertoire de Configuration
+### Créer un Répertoire de Configuration
 Sur votre Raspberry Pi, créez un nouveau répertoire :
 
 ```bash
@@ -130,14 +130,14 @@ Sur votre Raspberry Pi, créez un nouveau répertoire :
 sudo mkdir -p /opt/ttn-station/config
 ```
 
-Fichier de Configuration tc.uri
+### Fichier de Configuration tc.uri
 Créez un fichier de configuration tc.uri contenant une adresse de serveur LNS. Par exemple, si vous utilisez le cluster eu1 de The Things Stack Sandbox :
 
 ```bash
 
 echo 'wss://eu1.cloud.thethings.network:8887' | sudo tee /opt/ttn-station/config/tc.uri
 ```
-Fichier de Configuration tc.key
+### Fichier de Configuration tc.key
 Créez le fichier de configuration tc.key contenant un en-tête d'autorisation. Cet en-tête contiendra la clé API que vous avez créée à l'étape précédente et sera utilisé pour authentifier la connexion de votre passerelle.
 
 ```bash
@@ -145,7 +145,7 @@ Créez le fichier de configuration tc.key contenant un en-tête d'autorisation. 
 export API_KEY="NNSXS.XXXXXXXXXXXXXXX.YYYYYYYYYYYYYYYY"
 echo "Authorization: Bearer $API_KEY" | perl -p -e 's/\r\n|\n|\r/\r\n/g' | sudo tee -a /opt/ttn-station/config/tc.key
 ```
-Fichier de Configuration tc.trust
+### Fichier de Configuration tc.trust
 Créez le fichier de configuration tc.trust qui sera le CA racine utilisé pour vérifier les certificats de votre serveur LNS. Vous pouvez utiliser les certificats CA du système :
 
 ```bash
@@ -153,5 +153,5 @@ Créez le fichier de configuration tc.trust qui sera le CA racine utilisé pour 
 sudo ln -s /etc/ssl/certs/ca-certificates.crt /opt/ttn-station/config/tc.trust
 
 ```
-Fichier de Configuration station.conf
+### Fichier de Configuration station.conf
 Enfin, créez le fichier de configuration station.conf contenant les options de configuration pour votre concentrateur.
