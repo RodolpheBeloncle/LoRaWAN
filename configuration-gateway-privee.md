@@ -236,3 +236,44 @@ Cela initialisera la carte concentrateur, connectera votre passerelle à The Thi
 2022-03-27 02:11:50.009 [S2E:VERB] RX 867.5MHz DR5 SF7/BW125 snr=6.2 rssi=-103 xtime=0xE0000000E34FB4 - updf mhdr=40 DevAddr=260B0748 FCtrl=00 FCnt=35 FOpts=[] 014A mic=1717970429 (14 bytes)
 2022-03-27 02:12:06.130 [S2E:VERB] RX 867.3MHz DR5 SF7/BW125 snr=8.0 rssi=-102 xtime=0xE0000001D92CCB - updf mhdr=40 DevAddr=260B0748 FCtrl=00 FCnt=36 FOpts=[] 01EA mic=463407879 (14 bytes)
 ```
+## Exécuter le Packet Forwarder en tant que Service Système
+
+La dernière étape consiste à configurer le packet forwarder pour qu'il s'exécute en tant que service système sur le Raspberry Pi. Cela garantit que le forwarder démarrera automatiquement après le démarrage du Raspberry Pi.
+
+Tout d'abord, créez le fichier de configuration du service systemd :
+
+```sh
+echo '
+[Unit]
+Description=The Things Network Gateway
+
+[Service]
+WorkingDirectory=/opt/ttn-station/config
+ExecStart=/opt/ttn-station/bin/start.sh
+SyslogIdentifier=ttn-station
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+' | sudo tee /lib/systemd/system/ttn-station.service
+
+```
+Activez le service avec :
+
+```bash
+sudo systemctl enable ttn-station
+
+```
+Démarrez le service :
+
+```bash
+sudo systemctl start ttn-station
+
+```
+Vous pouvez observer les journaux du packet forwarder en utilisant la commande suivante :
+
+```bash
+sudo journalctl -f -u ttn-station
+```
+**Voilà ! Votre passerelle est maintenant entièrement fonctionnelle et vous pouvez commencer à développer votre cas d'utilisation IoT.**
