@@ -110,6 +110,7 @@ Assurez-vous de noter cela pour les étapes suivantes.
 
 ## Étape 5 : Enregistrer la Passerelle sur The Things Stack
 Pour enregistrer votre passerelle sur The Things Stack, suivez le processus décrit dans la section Adding Gateways. Pour l'EUI de la passerelle, utilisez l'EUI dérivé à l'étape précédente.
+https://www.thethingsindustries.com/docs/gateways/concepts/adding-gateways/
 
 Il est également recommandé d'activer l'option Require authenticated connection lors de l'enregistrement.
 
