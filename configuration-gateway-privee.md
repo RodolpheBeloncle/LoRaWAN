@@ -158,37 +158,14 @@ Enfin, créez le fichier de configuration station.conf contenant les options de 
 
 ```bash
 echo '
-#{
-#    "SX1301_conf": {
-#        "lorawan_public": true, // Spécifie que le réseau LoRaWAN est public
-#        "clksrc": 1, // Indique que radio_1 fournit l'horloge au concentrateur
-#        "radio_0": {
-#            "type": "SX1257", // Type de radio
-#            "rssi_offset": -166.0, // Décalage RSSI
-#            "tx_enable": true, // Transmission activée
-#            "antenna_gain": 0 // Gain de l'antenne
-#        },
-#        "radio_1": {
-#            "type": "SX1257", // Type de radio
-#            "rssi_offset": -166.0, // Décalage RSSI
-#            "tx_enable": false // Transmission désactivée
-#        }
-#    },
-#    "station_conf": {
-#        "routerid": "b827ebfffea3a5c3", // ID de la passerelle (à remplacer par l'ID de votre passerelle)
-#        "log_file": "stderr", // Fichier de log (stderr signifie que les logs seront envoyés vers la sortie standard d'erreur)
-#        "log_level": "DEBUG", // Niveau de journalisation
-#        "log_size": 10000000, // Taille maximale du fichier de log
-#        "log_rotate": 3, // Nombre de rotations des logs
-#        "CUPS_RESYNC_INTV": "1s" // Intervalle de resynchronisation CUPS
-#    }
-#}
-
-
 {
-    "SX1301_conf": {
-        "lorawan_public": true,
-        "clksrc": 1,
+    /* If slave-X.conf present this acts as default settings */
+    "SX1301_conf": { /* Actual channel plan is controlled by server */
+        "lorawan_public": true, /* is default */
+        "clksrc": 1, /* radio_1 provides clock to concentrator */
+        /* path to the SPI device, un-comment if not specified on the command line e.g., RADIODEV=/dev/spidev0.0 */
+        /*"device": "/dev/spidev0.0",*/
+        /* freq/enable provided by LNS - only HW specific settings listed here */
         "radio_0": {
             "type": "SX1257",
             "rssi_offset": -166.0,
@@ -200,11 +177,12 @@ echo '
             "rssi_offset": -166.0,
             "tx_enable": false
         }
+        /* chan_multiSF_X, chan_Lora_std, chan_FSK provided by LNS */
     },
     "station_conf": {
-        "routerid": "b827ebfffea3a5c3",
+        "routerid": "'"$EUI"'",
         "log_file": "stderr",
-        "log_level": "DEBUG",
+        "log_level": "DEBUG", /* XDEBUG,DEBUG,VERBOSE,INFO,NOTICE,WARNING,ERROR,CRITICAL */
         "log_size": 10000000,
         "log_rotate": 3,
         "CUPS_RESYNC_INTV": "1s"
@@ -216,40 +194,29 @@ Enfin, créez le script start.sh, qui sera utilisé pour réinitialiser l'iC880A
 
 ```bash
 
-#!/bin/bash
+echo '#!/bin/bash
 
-# Vérifiez si le pin est déjà exporté et désactivez-le si nécessaire
-if [ ! -d /sys/class/gpio/gpio25 ]; then
-  echo "25" > /sys/class/gpio/export
-  sleep 0.1
-fi
-
-# Réinitialisation de l'iC880a via le pin de réinitialisation
+# Reset iC880a PIN
 SX1301_RESET_BCM_PIN=25
+echo "$SX1301_RESET_BCM_PIN"  > /sys/class/gpio/export
+echo "out" > /sys/class/gpio/gpio$SX1301_RESET_BCM_PIN/direction
+echo "0"   > /sys/class/gpio/gpio$SX1301_RESET_BCM_PIN/value
+sleep 0.1
+echo "1"   > /sys/class/gpio/gpio$SX1301_RESET_BCM_PIN/value
+sleep 0.1
+echo "0"   > /sys/class/gpio/gpio$SX1301_RESET_BCM_PIN/value
+sleep 0.1
+echo "$SX1301_RESET_BCM_PIN"  > /sys/class/gpio/unexport
 
-if [ -d /sys/class/gpio/gpio$SX1301_RESET_BCM_PIN ]; then
-  echo "out" > /sys/class/gpio/gpio$SX1301_RESET_BCM_PIN/direction
-  sleep 0.1
-  echo "0" > /sys/class/gpio/gpio$SX1301_RESET_BCM_PIN/value
-  sleep 0.1
-  echo "1" > /sys/class/gpio/gpio$SX1301_RESET_BCM_PIN/value
-  sleep 0.1
-  echo "0" > /sys/class/gpio/gpio$SX1301_RESET_BCM_PIN/value
-  sleep 0.1
-  echo "$SX1301_RESET_BCM_PIN" > /sys/class/gpio/unexport
-else
-  echo "GPIO pin $SX1301_RESET_BCM_PIN not accessible. Check GPIO configuration."
-  exit 1
-fi
-
-# Test de la connexion, attente si nécessaire.
+# Test the connection, wait if needed.
 while [[ $(ping -c1 google.com 2>&1 | grep " 0% packet loss") == "" ]]; do
-  echo "[TTN Gateway]: En attente de la connexion internet..."
-  sleep 30
+echo "[TTN Gateway]: Waiting for internet connection..."
+sleep 30
 done
 
-# Démarrage de la station
+# Start station
 /opt/ttn-station/bin/station
+' | sudo tee /opt/ttn-station/bin/start.sh
 
 ```
 Vous pouvez verifier si le script est executable
