@@ -180,7 +180,7 @@ echo '
         /* chan_multiSF_X, chan_Lora_std, chan_FSK provided by LNS */
     },
     "station_conf": {
-        "routerid": "'"$EUI"'",
+        "routerid": "B827EBFFFEA3A5C3",
         "log_file": "stderr",
         "log_level": "DEBUG", /* XDEBUG,DEBUG,VERBOSE,INFO,NOTICE,WARNING,ERROR,CRITICAL */
         "log_size": 10000000,
