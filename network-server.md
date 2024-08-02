@@ -86,4 +86,10 @@ Vous accédez a une interface ressemblant à cela:
 
 ![gateway-interface](https://github.com/user-attachments/assets/8877977f-8e8b-4c8e-b95e-67d7537dc82d)
 
+Récuperer alors l'identifiant unique à chaque gateway qui est inscrit dans la partie configuration.
  
+L'enregistrement de la gateway est terminé, on peut passer à l'étape 5 afin de configurer la gateway.
+
+5. Configuration de la gateway
+
+
