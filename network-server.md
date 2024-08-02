@@ -34,9 +34,11 @@ Dans mon cas a moi c'est un **Lora e5 mini model STM32WLE5JC**
 Voir doc: https://wiki.seeedstudio.com/LoRa_E5_mini/
 
 Dans une console de serie (ex : arduino ide ou plateformeio )
-Brancher le micro controller a la prise usb et ensuite tapper les commandes suivantes format textedans la console afin d'obtenir
+Brancher le micro controller a la prise usb et ensuite tapper les commandes suivantes au format texte dans la console afin d'obtenir
 les informations nécessaires à l'enregistrement par OTAA de la device :
+
 EXEMPLE:
+
 entré
 Tx: AT+ID=DevEui
 sortie
