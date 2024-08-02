@@ -78,6 +78,12 @@ un raspberry B.
 Voir documentation : 
 http://wiki.dragino.com/xwiki/bin/view/Main/User%20Manual%20for%20All%20Gateway%20models/PG1302/#H1.4PinMapping
 
+Si vous avez suivi la documentation l'image flacher sur le raspberry py avec la gateway instancié, on a acces a une interface 
+afin de pouvoir configurer la Gateway (passerelle).
+ Aller dans un navigateur et tapper : http://IP_ADDRESS
 
+Vous accédez a une interface ressemblant à cela:
 
+![gateway-interface](https://github.com/user-attachments/assets/8877977f-8e8b-4c8e-b95e-67d7537dc82d)
 
+ 
