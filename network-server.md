@@ -15,7 +15,7 @@ docker-compose up
 
 ### Creation d'une application
 NB : une application est déjà crée par défaut qui s'appelle "Chirpstack"
-Neanmoins on a la passibilité d'en créer d'autres dans depuis l'onglet <Tenants>
+Néanmoins on a la possibilité d'en créer d'autres depuis l'onglet <Tenants>
 
 ### Création d'un Device Profiles
 -> Dans l'onglet <Device Profiles>
