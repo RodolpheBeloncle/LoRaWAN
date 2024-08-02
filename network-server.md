@@ -90,6 +90,6 @@ Récuperer alors l'identifiant unique à chaque gateway qui est inscrit dans la 
  
 L'enregistrement de la gateway est terminé, on peut passer à l'étape 5 afin de configurer la gateway.
 
-5. Configuration de la gateway
+#### 5. Configuration de la gateway
 
 
