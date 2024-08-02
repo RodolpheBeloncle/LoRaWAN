@@ -32,3 +32,9 @@ Entrer un nom , une description , deviceEUI doit etre celui entré dans le devic
 Si cela n'est pas encore fait , configurer au prealable le micro controller.
 Dans mon cas a moi c'est un **Lora e5 mini model STM32WLE5JC**
 Voir doc: https://wiki.seeedstudio.com/LoRa_E5_mini/
+
+-> Submit
+
+Et voila la nouvelle device est crée.
+La configuration du fil d'ariane est la suivante:
+Tenants/ChirpStack/Applications/myApplication/Devices/myDeviceOTAA
