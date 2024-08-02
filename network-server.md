@@ -28,3 +28,7 @@ file d'ariane Tenants/ChirpStack/Applications/myApplication
 
 2. Add device
 Entrer un nom , une description , deviceEUI doit etre celui entré dans le device OTAA que l'on veut activer, enfin je dois lui assigner un device profile que l'on a enregistrer precedement.
+
+Si cela n'est pas encore fait , configurer au prealable le micro controller.
+Dans mon cas a moi c'est un **Lora e5 mini model STM32WLE5JC**
+Voir doc: https://wiki.seeedstudio.com/LoRa_E5_mini/
