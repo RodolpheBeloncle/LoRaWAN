@@ -19,14 +19,14 @@ Neanmoins on a la passibilité d'en créer d'autres dans depuis l'onglet <Tenant
 
 ### Création d'un Device Profiles
 -> Dans l'onglet <Device Profiles>
-1. Add device profile
+  #### 1. Add device profile
 
 -> Une fois le device profile enregistré je vais pouvoir aller dans mon application et créer un device
 
 NB :  Suivre le fil d'ariane au niveau de la partie headers
 file d'ariane Tenants/ChirpStack/Applications/myApplication
 
-2. Add device
+  #### 2. Add device
 Entrer un nom , une description , deviceEUI doit etre celui entré dans le device OTAA que l'on veut activer, enfin je dois lui assigner un device profile que l'on a enregistrer precedement.
 
 Si cela n'est pas encore fait , configurer au prealable le micro controller.
@@ -49,16 +49,35 @@ Tx: AT+ID=AppEui
 sortie
 Rx: +ID: AppEui, 80:00:00:00:00:00:00:07
 
-entré
-Tx: AT+KEY=APPKEY,"2B7E151628AED2A6ABF7158809CF4F3C"
-sortie
-Rx: +KEY: APPKEY 2B7E151628AED2A6ABF7158809CF4F3C
-
 
 -> Submit
 
 Et voila la nouvelle device est créée.
 La configuration du fil d'ariane est la suivante:
 Tenants/ChirpStack/Applications/myApplication/Devices/myDeviceOTAA
+
+Il va falloir également créer une clé d'application:
+Pour la générer taper dans la console de serie:
+
+entré
+Tx: AT+KEY=APPKEY,"2B7E151628AED2A6ABF7158809CF4F3C"
+sortie
+Rx: +KEY: APPKEY 2B7E151628AED2A6ABF7158809CF4F3C
+
+-> Notre device est enfin configurée mais il est inactif,on va pouvoir enregistrer une gateway dans le network server, pour enfin pouvoir voir des 
+trames qui partira depuis le device jusque dans l'application server.
+
+#### 4. Enregistrement d'une gateway
+
+Aller dans l'onglet <Gateway>
+Add gateway
+Preciser uun nom pour la gateway et l'id de la gateway
+NB: J'utilise comme gateway un model type PG1302 dragino lorawan concentrateur , qui se branche sur 
+un raspberry B.
+
+Voir documentation : 
+http://wiki.dragino.com/xwiki/bin/view/Main/User%20Manual%20for%20All%20Gateway%20models/PG1302/#H1.4PinMapping
+
+
 
 
