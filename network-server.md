@@ -37,11 +37,19 @@ Dans une console de serie (ex : arduino ide ou plateformeio )
 Brancher le micro controller a la prise usb et ensuite tapper les commandes suivantes format textedans la console afin d'obtenir
 les informations nécessaires à l'enregistrement par OTAA de la device :
 EXEMPLE:
+entré
 Tx: AT+ID=DevEui
+sortie
 Rx: +ID: DevEui, 2C:F7:F1:20:24:90:03:63
+
+entré
 Tx: AT+ID=AppEui
+sortie
 Rx: +ID: AppEui, 80:00:00:00:00:00:00:07
+
+entré
 Tx: AT+KEY=APPKEY,"2B7E151628AED2A6ABF7158809CF4F3C"
+sortie
 Rx: +KEY: APPKEY 2B7E151628AED2A6ABF7158809CF4F3C
 
 
