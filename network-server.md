@@ -20,4 +20,11 @@ Neanmoins on a la passibilité d'en créer d'autres dans depuis l'onglet <Tenant
 ### Création d'un Device Profiles
 -> Dans l'onglet <Device Profiles>
 1. Add device profile
-2. 
+
+-> Une fois le device profile enregistré je vais pouvoir aller dans mon application et créer un device
+
+NB :  Suivre le fil d'ariane au niveau de la partie headers
+file d'ariane Tenants/ChirpStack/Applications/myApplication
+
+2. Add device
+Entrer un nom , une description , deviceEUI doit etre celui entré dans le device OTAA que l'on veut activer, enfin je dois lui assigner un device profile que l'on a enregistrer precedement.
