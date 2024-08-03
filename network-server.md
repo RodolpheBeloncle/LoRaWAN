@@ -163,3 +163,5 @@ NB : Utiliser mqtt-explorer comme client
 Se connecter en local 127.0.0.1:1883
 
 <img width="844" alt="mqtt-client" src="https://github.com/user-attachments/assets/933967f2-fb63-440f-8cdc-c16c95c70b89">
+1. subscribe topic uplink : application/a52fe825-8112-401f-ae14-dffc00b55322/device/2cf7f12051004915/event/up
+2. publisher topic downlink :  application/a52fe825-8112-401f-ae14-dffc00b55322/device/2cf7f12051004915/command/down
