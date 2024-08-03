@@ -153,3 +153,4 @@ test : flux uplink -> AT+MSG="Data to send"
 -> **Troubleshooting**
  - Vérification des ports et de l'adresse ip de l'Ébergeur du service worker
  - Activer les logs : AT + LOG=ON
+ - Utilisation de l'application wirechark pour verifier les fluxs
