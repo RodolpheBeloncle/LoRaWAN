@@ -142,3 +142,10 @@ Enfin si vous retoruner sur l'interface chirstack, cela devrait ressembler à ca
 ![interface-chirpstack](https://github.com/user-attachments/assets/1dcf7cd9-c25f-449d-9b27-54c45e1791db)
 
 La gateway et la device son activés
+
+-> Envoie de données en queue
+![enqueur-message](https://github.com/user-attachments/assets/1b257d8b-183b-4d14-9960-8488147b43e9)
+Rappel: device classe A pour que je puisse recevoir une donnée, il faut que j'emette un flux uplink.
+
+Enqueue data : flux downlink AQ==
+test : flux uplink -> AT+MSG="Data to send"
