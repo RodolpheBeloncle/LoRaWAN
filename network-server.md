@@ -156,4 +156,9 @@ test : flux uplink -> AT+MSG="Data to send"
  - Activer les logs : AT + LOG=ON
  - Utilisation de l'application wirechark pour verifier les fluxs
 
--> **Intégration d'application via http**
+-> **Intégration d'application via mqtt**
+Modifier la configuration dans le fichier chirpstack-docker > configuration > chirpstack > chirpstack.toml
+Utiliser mqtt explorer comme client
+Se connecter en local 127.0.0.1:1883
+
+<img width="844" alt="mqtt-client" src="https://github.com/user-attachments/assets/933967f2-fb63-440f-8cdc-c16c95c70b89">
