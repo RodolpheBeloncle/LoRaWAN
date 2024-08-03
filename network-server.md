@@ -143,14 +143,17 @@ Enfin si vous retoruner sur l'interface chirstack, cela devrait ressembler à ca
 
 La gateway et la device son activés
 
--> Envoie de données en queue
+-> **Envoie de données en queue**
 ![enqueur-message](https://github.com/user-attachments/assets/1b257d8b-183b-4d14-9960-8488147b43e9)
 Rappel: device classe A pour que je puisse recevoir une donnée, il faut que j'emette un flux uplink.
 
 Enqueue data : flux downlink AQ==
 test : flux uplink -> AT+MSG="Data to send"
 
+
 -> **Troubleshooting**
  - Vérification des ports et de l'adresse ip de l'Ébergeur du service worker
  - Activer les logs : AT + LOG=ON
  - Utilisation de l'application wirechark pour verifier les fluxs
+
+-> **Intégration d'application via http**
