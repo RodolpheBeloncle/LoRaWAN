@@ -149,3 +149,7 @@ Rappel: device classe A pour que je puisse recevoir une donnée, il faut que j'e
 
 Enqueue data : flux downlink AQ==
 test : flux uplink -> AT+MSG="Data to send"
+
+-> **Troubleshooting**
+ - Vérification des ports et de l'adresse ip de l'Ébergeur du service worker
+ - Activer les logs : AT + LOG=ON
