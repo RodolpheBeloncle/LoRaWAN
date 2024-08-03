@@ -169,3 +169,10 @@ application/a52fe825-8112-401f-ae14-dffc00b55322/device/2cf7f12051004915/event/u
 
 2. publisher topic downlink:
 application/a52fe825-8112-401f-ae14-dffc00b55322/device/2cf7f12051004915/command/down
+
+Tram a envoyer pour tester au format Json : 
+{
+  "confirmed": false,
+  "fPort":10,
+  "data":"AQ=="
+}
