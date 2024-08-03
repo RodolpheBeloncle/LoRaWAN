@@ -92,4 +92,9 @@ L'enregistrement de la gateway est terminé, on peut passer à l'étape 5 afin d
 
 #### 5. Configuration de la gateway
 
+Changer la configuration actuelle afin que la gateway depuis le réseau local puisse envoyer les datas au network server
+
+
+<img width="914" alt="configuration" src="https://github.com/user-attachments/assets/75633e97-e4d1-4572-8e8a-18bc8732fb2a">
+
 
