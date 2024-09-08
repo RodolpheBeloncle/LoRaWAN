@@ -650,10 +650,17 @@ Changer la configuration actuelle afin que la gateway depuis le réseau local pu
 
 <img width="914" alt="configuration" src="https://github.com/user-attachments/assets/75633e97-e4d1-4572-8e8a-18bc8732fb2a">
 
+1. création de l'application
+2. création de la gateway
+3. création d'un device profil
+4. création d'une device
+
 #### 6. Enregistrement de la device stm32 lora Wio-e5 mini
+Via AT COMMAND INSTALLER SUR LE FIRMWARE
 
 Vérification des Clés
 Assurez-vous que les clés configurées sur le dispositif STM32 correspondent exactement à celles enregistrées dans ChirpStack.
+-> soit on device d'enregistrer d'abord sur chorspstack ou soit d'enregistrer les infos enregistrer sur chirpstack sur le stm32wioe5
 
 -> **Clés sur ChirpStack**
 AppEUI: 52:69:73:69:6E:67:48:46
@@ -662,6 +669,9 @@ AppKey: (Doit être vérifiée dans l'interface ChirpStack)
 
 -> **Clés sur le Dispositif STM32**
 Vérifiez les valeurs actuelles configurées sur votre STM32:
+AT + ID
+
+** Création de noiveau identifiants **
 AT+ID=DevEUI
 AT+ID=AppEUI
 AT+KEY=APPKEY
@@ -689,12 +699,14 @@ Tentative de Rejoindre le Réseau
 Envoyer la commande de join:
 
 AT+JOIN
+<img width="1092" alt="Capture d’écran 2024-09-08 à 18 51 44" src="https://github.com/user-attachments/assets/4683e0b1-f31c-4120-bcc8-d978cd766375">
 
 Enfin si vous retoruner sur l'interface chirstack, cela devrait ressembler à ca :
 
 ![interface-chirpstack](https://github.com/user-attachments/assets/1dcf7cd9-c25f-449d-9b27-54c45e1791db)
 
 La gateway et la device son activés
+![Capture d’écran 2024-09-08 à 18 51 44 (2)](https://github.com/user-attachments/assets/ca79ac0c-9abe-4e8d-afd2-6bf61161c4d0)
 
 -> **Envoie de données en queue**
 ![enqueur-message](https://github.com/user-attachments/assets/1b257d8b-183b-4d14-9960-8488147b43e9)
