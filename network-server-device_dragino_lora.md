@@ -297,7 +297,10 @@ function encodeDownlink(input) {
 }
 
 ```
+
 ⚠️ Attention ce code est adapté pour traduire la payload du flux uplink envoyé par l'arduino
+
+
 <img width="348" alt="Capture d’écran 2024-09-12 à 21 44 44" src="https://github.com/user-attachments/assets/b5bfa11a-7601-43dc-a331-0d8d55a994e1">
 
 ____
