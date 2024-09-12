@@ -13,12 +13,26 @@ Nous avons le choix entre mettre en place toute l'infrastructure du réseau ou n
 
 - L'utilisateur souscrit à un ou plusieurs forfaits pour pouvoir connecter sa flotte de Device. À titre d'exemple, voici les abonnements proposés par Objenious et Orange en 2022 pour avoir accès à leur réseau LoRaWAN :
 
-### Orange :
+### Réseau Orange :
 - 📡 Uplink illimité (dans le respect du Duty-cycle).
 - 💬 Le prix de chaque message downlink est de 5 cts.
-- 💳 L'abonnement varie de 1€/mois (36 mois) à 2€/mois (sans engagement).  
+- 💳 L'abonnement varie de 1€/mois (36 mois) à 2€/mois (sans engagement).
 
-### Bouygues Objenious :
+#### Configuration gateway public
+
+Uplink illimité (dans le respect du Duty-cycle).
+Le prix de chaque message downlink est de 5 cts.
+L'abonnement varie de 1€/mois (36 mois) à 2€/mois (sans engagement).
+
+La démarche de l'utilisateur pour connecter les Devices LoRaWAN est simple :
+1. Souscrire à un abonnement.
+2. Déclarer les Devices sur la plateforme de l'opérateur ("Live Object" pour Orange, "Spot"
+pour Objenious).
+3. Activer les Devices.
+4. Récupérer les données sur la plateforme de l'opérateur.
+5. Rediriger vos données vers une plateforme IoT.
+
+### Bouygues Objenious : **L'offre n'existe plus**
 - 📈 144 messages uplink par jour.
 - 📉 6 messages downlink par jour.
 - 💰 L'abonnement est de 20 € / an.
