@@ -247,7 +247,60 @@ Rappel: device classe A pour que je puisse recevoir une donnée, il faut que j'e
 Enqueue data : flux downlink AQ==
 test : flux uplink -> AT+MSG="Data to send"
 
+# Décripter les flux uplink et downlink
+## Exemple de flux uplink
+<img width="1626" alt="Capture d’écran 2024-09-12 à 21 37 14" src="https://github.com/user-attachments/assets/194df1eb-4c92-4f64-8602-9ff32c40bded">
 
+-> Allez dans l'onglet Device profil -> Codec
+<img width="1327" alt="Capture d’écran 2024-09-12 à 21 40 05" src="https://github.com/user-attachments/assets/6e7212bb-055b-424f-85f5-a03ad1e8fb79">
+
+## Voici le code javascript code
+Afin de decripter les flux uplinks et downlink
+
+```js
+
+// Decode uplink function.
+function decodeUplink(input) {
+  // Convertir les bytes en chaîne hexadécimale
+  var hexString = input.bytes.map(function(byte) {
+    return ('0' + (byte & 0xFF).toString(16)).slice(-2);
+  }).join('');
+
+  // Convertir la chaîne hexadécimale en texte
+  var message = hexToAscii(hexString);
+
+  return {
+    data: {
+      rawHex: hexString,
+      decodedMessage: message
+    },
+    warnings: [`Decoded message: ${message}`] // Utiliser warnings pour le logging
+  };
+}
+
+// Fonction pour convertir l'hexadécimal en ASCII
+function hexToAscii(hex) {
+  var str = '';
+  for (var i = 0; i < hex.length; i += 2) {
+    var charCode = parseInt(hex.substr(i, 2), 16);
+    str += String.fromCharCode(charCode);
+  }
+  return str;
+}
+
+// Encode downlink function.
+function encodeDownlink(input) {
+  // Pour cet exemple, nous ne modifions pas la fonction d'encodage
+  return {
+    bytes: [225, 230, 255, 0]
+  };
+}
+
+```
+⚠️ Attention ce code est adapté pour traduire la payload du flux uplink envoyé par l'arduino
+<img width="348" alt="Capture d’écran 2024-09-12 à 21 44 44" src="https://github.com/user-attachments/assets/b5bfa11a-7601-43dc-a331-0d8d55a994e1">
+
+____
 -> **Troubleshooting**
  - Vérification des ports et de l'adresse ip de l'Ébergeur du service worker
  - Activer les logs : AT + LOG=ON
