@@ -1,6 +1,6 @@
 # Configuration gateway public
 
-## Réseaux Ornage
+## Réseaux Orange
 
 Uplink illimité (dans le respect du Duty-cycle).
 Le prix de chaque message downlink est de 5 cts.
