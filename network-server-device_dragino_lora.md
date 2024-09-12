@@ -209,38 +209,29 @@ AppKey: (Doit être vérifiée dans l'interface ChirpStack)
 
 -> **Clés à partir du dispositif Dragino shield LA66 Dispositif**
 Normalement les identifiants vous sont livrez avec.
-Vérifiez les valeurs actuelles configurées sur votre STM32:
-AT + ID
-
+Vérifiez les valeurs actuelles configurées sur votre Dragino:
+---
 ** Création de noiveau identifiants **
-AT+ID=DevEUI
-AT+ID=AppEUI
-AT+KEY=APPKEY
-
--> **Configuration des Clés sur STM32**
-
 Configurer le DevEUI:
-AT+ID=DevEUI,"2CF7F12051004915"
+DevEUI = "2CF7F12051004915"
 
 Configurer l'AppEUI:
-AT+ID=AppEUI,"526973696E674846"
+AppEUI= "526973696E674846"
 
 Configurer l'AppKey:
-Assurez-vous que l'AppKey configuré dans le dispositif STM32 correspond exactement à celui enregistré dans ChirpStack.
+Assurez-vous que l'AppKey configuré dans le dispositif Dragino correspond exactement à celui enregistré dans ChirpStack.
 
-AT+KEY=APPKEY,"<votre AppKey>"
+APPKEY="<votre AppKey>"
 Vérification et Configuration Régionale
 Configurer la région:
 
-AT+DR=EU868
+fréquence europe =EU868
 Configurer le mode OTAA:
 
 AT+MODE=LWOTAA
 Tentative de Rejoindre le Réseau
-Envoyer la commande de join:
 
-AT+JOIN
-<img width="1092" alt="Capture d’écran 2024-09-08 à 18 51 44" src="https://github.com/user-attachments/assets/4683e0b1-f31c-4120-bcc8-d978cd766375">
+!! Voir la configuration d'une device avec le code source plus haut !!
 
 Enfin si vous retoruner sur l'interface chirstack, cela devrait ressembler à ca :
 
