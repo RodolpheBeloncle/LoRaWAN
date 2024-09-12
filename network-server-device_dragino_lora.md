@@ -232,13 +232,18 @@ AT+MODE=LWOTAA
 Tentative de Rejoindre le Réseau
 
 !! Voir la configuration d'une device avec le code source plus haut !!
-
+---
 Enfin si vous retoruner sur l'interface chirstack, cela devrait ressembler à ca :
 
 ![interface-chirpstack](https://github.com/user-attachments/assets/1dcf7cd9-c25f-449d-9b27-54c45e1791db)
 
+---
+
 La gateway et la device son activés
+
 ![Capture d’écran 2024-09-08 à 18 51 44 (2)](https://github.com/user-attachments/assets/ca79ac0c-9abe-4e8d-afd2-6bf61161c4d0)
+
+---
 
 -> **Envoie de données en queue**
 ![enqueur-message](https://github.com/user-attachments/assets/1b257d8b-183b-4d14-9960-8488147b43e9)
@@ -303,7 +308,7 @@ function encodeDownlink(input) {
 
 <img width="348" alt="Capture d’écran 2024-09-12 à 21 44 44" src="https://github.com/user-attachments/assets/b5bfa11a-7601-43dc-a331-0d8d55a994e1">
 
-____
+---
 -> **Troubleshooting**
  - Vérification des ports et de l'adresse ip de l'Ébergeur du service worker
  - Activer les logs : AT + LOG=ON
