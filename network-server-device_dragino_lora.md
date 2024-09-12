@@ -30,25 +30,138 @@ file d'ariane Tenants/ChirpStack/Applications/myApplication
 Entrer un nom , une description , deviceEUI doit etre celui entré dans le device OTAA que l'on veut activer, enfin je dois lui assigner un device profile que l'on a enregistrer precedement.
 
 Si cela n'est pas encore fait , configurer au prealable le micro controller.
-Dans mon cas a moi c'est un **Lora e5 mini model STM32WLE5JC**
-Voir doc: https://wiki.seeedstudio.com/LoRa_E5_mini/
+Dans mon cas a moi c'est un **Arduino avec un dragino shield**
+![LA668ARDUINO](https://github.com/user-attachments/assets/4711f18f-7b7c-4714-91c4-27f55139382c)
 
+Voir doc: http://8.211.40.43:8080/xwiki/bin/view/Main/User%20Manual%20for%20LoRaWAN%20End%20Nodes/LA66%20LoRaWAN%20Shield%20User%20Manual/
 Dans une console de serie (ex : arduino ide ou plateformeio )
 Brancher le micro controller a la prise usb et ensuite tapper les commandes suivantes au format texte dans la console afin d'obtenir
 les informations nécessaires à l'enregistrement par OTAA de la device :
 
 EXEMPLE:
 
-entré
-Tx: AT+ID=DevEui
-sortie
-Rx: +ID: DevEui, 2C:F7:F1:20:24:90:03:63
+```arduino
 
-entré
-Tx: AT+ID=AppEui
-sortie
-Rx: +ID: AppEui, 80:00:00:00:00:00:00:07
+#include <SoftwareSerial.h>
 
+// Variables globales pour la gestion des chaînes de caractères
+String inputString = "";         // une chaîne pour contenir les données entrantes
+bool stringComplete = false;     // indique si la chaîne est complète
+
+// Variables pour la gestion du temps
+long old_time = millis();
+long new_time;
+long uplink_interval = 60000;  // 60000 ms (1 minute)
+
+// Drapeaux pour le contrôle du flux du programme
+bool time_to_at_recvb = false;
+bool get_LA66_data_status = false;
+bool network_joined_status = false;
+
+// Configuration de la communication série logicielle
+SoftwareSerial ss(10, 11); // Arduino RX, TX
+
+// Tampon pour recevoir les données
+char rxbuff[128];
+uint8_t rxbuff_index = 0;
+
+void setup() {
+  // Initialisation des communications séries
+  Serial.begin(9600);
+  ss.begin(9600);
+  ss.listen();
+  
+  inputString.reserve(200);
+  
+  // Réinitialisation du module LA66
+  ss.println("ATZ");
+}
+
+void loop() {
+  // Gestion de l'envoi périodique des données
+  new_time = millis();
+  if ((new_time - old_time >= uplink_interval) && (network_joined_status == 1)) {
+    old_time = new_time;
+    get_LA66_data_status = false;
+    
+    // Envoi de la chaîne "Hello World" encodée en hexadécimal
+    String payload = "48656C6C6F20576F726C64"; // "Hello World" en hex
+    String command = "AT+SENDB=0,2," + String(payload.length() / 2) + "," + payload;
+    ss.println(command);
+  }
+
+  // Gestion de la réception des données
+  if (time_to_at_recvb == true) {
+    time_to_at_recvb = false;
+    get_LA66_data_status = true;
+    delay(1000);
+    ss.println("AT+CFG");
+  }
+  
+  // Lecture des données reçues du module LA66
+  while (ss.available()) {
+    char inChar = (char) ss.read();
+    inputString += inChar;
+    rxbuff[rxbuff_index++] = inChar;
+    
+    if (rxbuff_index > 128)
+      break;
+    
+    if (inChar == '\n' || inChar == '\r') {
+      stringComplete = true;
+      rxbuff[rxbuff_index] = '\0';
+      
+      // Vérification de différents états du module
+      if (strncmp(rxbuff, "JOINED", 6) == 0) {
+        network_joined_status = 1;
+      }
+      
+      if (strncmp(rxbuff, "Dragino LA66 Device", 19) == 0) {
+        network_joined_status = 0;
+      }
+      
+      if (strncmp(rxbuff, "Run AT+RECVB=? to see detail", 28) == 0) {
+        time_to_at_recvb = true;
+        stringComplete = false;
+        inputString = "";
+      }
+      
+      // Traitement des données reçues
+      if (strncmp(rxbuff, "AT+RECVB=", 9) == 0) {
+        stringComplete = false;
+        inputString = "";
+        Serial.print("\r\nGet downlink data(FPort & Payload) ");
+        Serial.println(&rxbuff[9]);
+      }
+      
+      rxbuff_index = 0;
+      
+      if (get_LA66_data_status == true) {
+        stringComplete = false;
+        inputString = "";
+      }
+    }
+  }
+  
+  // Lecture des commandes entrées par l'utilisateur via le moniteur série
+  while (Serial.available()) {
+    char inChar = (char) Serial.read();
+    inputString += inChar;
+    if (inChar == '\n' || inChar == '\r') {
+      ss.print(inputString);
+      inputString = "";
+    }
+  }
+  
+  // Affichage des données reçues complètes
+  if (stringComplete) {
+    Serial.print(inputString);
+    inputString = "";
+    stringComplete = false;
+  }
+}
+
+```
 
 -> Submit
 
